@@ -1,0 +1,21 @@
+
+spring:
+  application:
+    name: eureka-client
+  cloud:
+     config:
+       name: eureka-client #用于获取远程属性的应用程序名称。
+       label: master #用于拉取远程配置属性的标签名称。默认设置在服务器上（通常是基于git的服务器的“master”分支）。
+       profile: dev #获取远程配置时使用的默认配置文件（逗号分隔）。默认为“default”。
+       fail-fast: true
+       uri: http://localhost:13801
+
+#自动刷新配置文件， 暂时没用调通spring-boot-starter-actuator
+management:
+  endpoint:
+    shutdown:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
